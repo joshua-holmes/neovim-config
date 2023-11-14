@@ -50,9 +50,9 @@ keymap("n", "<" .. ALT_KEY .. "-h>", ":vertical resize -2<CR>", opts)
 keymap("n", "<" .. ALT_KEY .. "-l>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<S-c>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>", opts) -- was previously to move cursor to middle of screen
+keymap("n", "<S-h>", ":bprevious<CR>", opts) -- was previously to move cursor to middle of screen
+keymap("n", "<S-k>", "<cmd>Bdelete!<CR>", opts) -- was previously python manual (weird feature)
 
 -- Move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
