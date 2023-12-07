@@ -137,10 +137,14 @@ local n_mappings = {
     c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     h = { "<cmd>nohlsearch<CR><cmd>lua require('mini.map').refresh()<CR>", "No Highlight" },
     f = {
-        ":Telescope find_files<CR>",
-        "Find files",
+        name = "Find",
+        f = {
+            ":Telescope find_files<CR>",
+            "Find files",
+        },
+        t = { "<cmd>Telescope live_grep theme=ivy<CR>", "Find text" },
+        p = { "<cmd>Telescope media_files<CR>", "Find photos" }
     },
-    F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
     P = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
     p = {
