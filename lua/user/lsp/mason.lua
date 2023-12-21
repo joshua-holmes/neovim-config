@@ -13,7 +13,7 @@ local servers = {
     "lua_ls",
     "marksman",
     "pyright",
-    "rust_analyzer",
+    "rust-tools", -- `rust-tools` handles setting lspconfig with rust, so call lspconfig with this instead of rust_analyzer
     "sqlls",
     "tsserver",
     "vimls",
@@ -60,5 +60,25 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", conf_opts, opts)
     end
 
+    -- use `rust-tools` instead of `rust_analyzer`
+    if server == "rust-tools" then
+        local rust_tools_ok, rt = pcall(require, "rust-tools")
+        if not rust_tools_ok then
+            print("Failed to load rust-tools")
+            goto continue
+        end
+        opts.on_attach = function(client, bufnr)
+            -- run normal `on_attach` function
+            opts.on_attach(client, bufnr)
+            -- override `whichkey` code action bind just for this buffer
+            vim.keymap.set("n", "<leader>la", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end
+        rt.setup({
+            server = opts
+        })
+        goto continue
+    end
+
     lspconfig[server].setup(opts)
+    ::continue::
 end
