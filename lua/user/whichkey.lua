@@ -121,15 +121,20 @@ local n_mappings = {
         f = {
             name = "Firefox",
             o = { "<cmd>lua _OPEN_FIREFOX()<CR>", "Open current buffer in Firefox" },
-        }
+        },
+        m = { ":MarkdownPreviewToggle<cr>", "Markdown Preview Toggle" },
     },
     b = {
         "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
         "Buffers",
     },
     d = {
-        name = "Document",
-        m = { ":MarkdownPreviewToggle<cr>", "Markdown Preview Toggle" },
+        name = "Debug",
+        b = { ":lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
+        c = { ":lua require('dap').continue()<cr>", "Continue" },
+        o = { ":lua require('dap').step_over()<cr>", "Step over" },
+        i = { ":lua require('dap').step_into()<cr>", "Step into" },
+        r = { ":lua require('dap').repl.open()<cr>", "Inspect state using REPL" },
     },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     w = { "<cmd>w!<CR>", "Save" },

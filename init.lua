@@ -22,5 +22,6 @@ require "user.whichkey"
 require "user.autocommands"
 require "user.mini_map"
 require "user.neodev" -- must be loaded before lspconfig, which is in "user.lsp"
+require "user.debug"
 require "user.lsp"
 
