@@ -110,6 +110,8 @@ local v_opts_remap = create_opts_table("v", false)
 
 local n_mappings = {
     [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
+    ["["] = { "<Plug>(MatchitNormalMultiBackward)", "Jump to start of contianer" },
+    ["]"] = { "<Plug>(MatchitNormalMultiForward)", "Jump to end of contianer" },
     a = {
         -- NOTE: Entirely custom commands that are created for my current needs",
         name = "Ad Hoc",
