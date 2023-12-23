@@ -6,6 +6,7 @@ local servers = {
     "cssls",
     "cssmodules_ls",
     "dockerls",
+    "glsl_analyzer",
     "html",
     "jsonls",
     "lemminx",
@@ -36,6 +37,7 @@ local settings = {
 local servers_to_ensure_installed = {}
 local excluded_from_check = { -- add servers to exclude form mason's lspconfig compatibility check here
     "rust-tools",
+    "glsl_analyzer",
 }
 for _,s in pairs(servers) do
     for _,e in pairs(excluded_from_check) do
