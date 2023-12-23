@@ -33,9 +33,20 @@ local settings = {
     max_concurrent_installers = 4,
 }
 
+local servers_to_ensure_installed = {}
+local excluded_from_check = { -- add servers to exclude form mason's lspconfig compatibility check here
+    "rust-tools",
+}
+for _,s in pairs(servers) do
+    for _,e in pairs(excluded_from_check) do
+        if e ~= s then
+            table.insert(servers_to_ensure_installed, s)
+        end
+    end
+end
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
-    ensure_installed = servers,
+    ensure_installed = servers_to_ensure_installed,
     automatic_installation = true,
 })
 
