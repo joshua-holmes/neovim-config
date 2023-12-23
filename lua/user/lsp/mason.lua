@@ -40,10 +40,15 @@ local excluded_from_check = { -- add servers to exclude form mason's lspconfig c
     "glsl_analyzer",
 }
 for _,s in pairs(servers) do
+    local is_excluded = false;
     for _,e in pairs(excluded_from_check) do
-        if e ~= s then
-            table.insert(servers_to_ensure_installed, s)
+        if e == s then
+            is_excluded = true;
+            break;
         end
+    end
+    if not is_excluded then
+        table.insert(servers_to_ensure_installed, s)
     end
 end
 require("mason").setup(settings)
