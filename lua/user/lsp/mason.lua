@@ -90,6 +90,7 @@ for _, server in pairs(servers) do
             opts.on_attach(client, bufnr)
             -- override `whichkey` code action bind just for this buffer
             vim.keymap.set("n", "<leader>la", rt.code_action_group.code_action_group, { buffer = bufnr })
+            vim.keymap.set("n", "gh", rt.hover_actions.hover_actions, { buffer = bufnr })
         end
         rt.setup({
             server = opts
