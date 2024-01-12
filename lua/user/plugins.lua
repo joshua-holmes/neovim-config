@@ -112,6 +112,7 @@ return packer.startup(function(use)
 
     -- Debugging
     use "mfussenegger/nvim-dap"
+    use "ldelossa/nvim-dap-projects"
     use "rcarriga/nvim-dap-ui"
     use "nvim-telescope/telescope-dap.nvim"
 

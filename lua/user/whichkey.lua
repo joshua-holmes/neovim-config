@@ -137,6 +137,8 @@ local n_mappings = {
         o = { ":lua require('dap').step_over()<cr>", "Step over" },
         i = { ":lua require('dap').step_into()<cr>", "Step into" },
         r = { ":lua require('dap').repl.open()<cr>", "Inspect state using REPL" },
+        l = { ":lua require('dap').run_last()<cr>", "Run last" },
+        u = { ":lua require('dapui').toggle()<cr>", "Toggle DAP UI" },
     },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     w = { "<cmd>w!<CR>", "Save" },
