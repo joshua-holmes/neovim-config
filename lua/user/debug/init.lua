@@ -4,3 +4,4 @@ if not status_ok then
     return
 end
 
+require "user.debug.rust"
