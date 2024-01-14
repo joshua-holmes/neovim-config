@@ -21,9 +21,11 @@ require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
 require "user.mini_map"
-require "user.nvim-dap-projects"
 require "user.dapui"
-require "user.neodev" -- must be loaded before lspconfig, which is in "user.lsp"
 require "user.debug"
-require "user.lsp"
+
+-- order matters
+require "user.neodev" -- before lsp
+require "user.lsp"    -- after neodev
+--
 
