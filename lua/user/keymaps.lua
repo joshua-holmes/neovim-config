@@ -23,6 +23,7 @@ vim.g.maplocalleader = " "
 -- All modes --
 -- Select all text
 keymap("", "<C-z>", "<esc>gg<S-v><S-g>", opts)
+keymap("", "<C-s>", "<esc><C-s>", opts)
 
 
 -- Normal --
@@ -66,8 +67,6 @@ keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 
 -- Insert --
--- Save in insert mode
-keymap("i", "<C-s>", "<esc><C-s>", opts)
 
 -- Terminal --
 -- Better terminal navigation
