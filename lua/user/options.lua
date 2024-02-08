@@ -35,6 +35,7 @@ local options = {
     scrolloff = 999,                       -- minimal number of screen lines to keep above and below the cursor
     sidescrolloff = 8,                     -- minimal number of screen columns either side of cursor if wrap is `false`
     whichwrap = "bs<>[]hl",                -- which "horizontal" keys are allowed to travel to prev/next line
+    shell = "/bin/bash --login",           -- sets shell to bash with login enabled, which will source a profile such as `~/.bash_profile`
 }
 
 for k, v in pairs(options) do
