@@ -166,38 +166,6 @@ local n_mappings = {
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
 
-	R = {
-		name = "Recursive",
-
-		R = {
-			name = "Recursive",
-
-			R = {
-				name = "Recursive",
-
-				R = {
-					name = "Recursive",
-
-					R = {
-						name = "Recursive",
-
-						R = {
-							name = "Recursive",
-
-							R = {
-								name = "Recursive",
-
-								R = {
-									{ "<cmd>lua print('Stack overflow')<cr>", "Recursive" },
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-	},
-
 	g = {
 		name = "Git",
 		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
