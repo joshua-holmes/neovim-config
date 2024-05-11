@@ -19,6 +19,7 @@ local servers = {
     "tsserver",
     "vimls",
     "yamlls",
+    "zls",
 }
 
 local settings = {
