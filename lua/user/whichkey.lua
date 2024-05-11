@@ -113,20 +113,6 @@ local n_mappings = {
 	[";"] = { "<cmd>Alpha<cr>", "Dashboard" },
 	["["] = { "<Plug>(MatchitNormalMultiBackward)", "Jump to start of contianer" },
 	["]"] = { "<Plug>(MatchitNormalMultiForward)", "Jump to end of contianer" },
-	a = {
-		-- NOTE: Entirely custom commands that are created for my current needs",
-		name = "Ad Hoc",
-		s = {
-			name = "Servo",
-			t = { "<cmd>lua _TEST_SERVO()<CR>", "Run test on current buffer" },
-			o = { "<cmd>lua _OPEN_SERVO()<CR>", "Open current buffer in Servo" },
-		},
-		f = {
-			name = "Firefox",
-			o = { "<cmd>lua _OPEN_FIREFOX()<CR>", "Open current buffer in Firefox" },
-		},
-		m = { ":MarkdownPreviewToggle<cr>", "Markdown Preview Toggle" },
-	},
 	b = {
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Buffers",
@@ -228,6 +214,7 @@ local n_mappings = {
 		o = { "<cmd>lua require('mini.map').open()<cr>", "Open" },
 		c = { "<cmd>lua require('mini.map').close()<cr>", "Close" },
 	},
+	M = { ":MarkdownPreviewToggle<cr>", "Markdown Preview Toggle" },
 	s = {
 		name = "Search",
 		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
