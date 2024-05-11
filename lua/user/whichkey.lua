@@ -143,6 +143,7 @@ local n_mappings = {
 	},
 	e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	w = { "<cmd>w!<CR>", "Save" },
+	W = { ":lua require('pywal16').setup()<cr>", "Reload pywal colorscheme" },
 	q = { "<cmd>q!<CR>", "Quit" },
 	c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	h = { "<cmd>nohlsearch<CR><cmd>lua require('mini.map').refresh()<CR>", "No Highlight" },
