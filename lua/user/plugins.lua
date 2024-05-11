@@ -73,6 +73,7 @@ return packer.startup(function(use)
     -- Colorschemes
     use "rebelot/kanagawa.nvim"
     use "savq/melange-nvim"
+    use "uZer/pywal16.nvim"
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp"      -- The completion plugin
