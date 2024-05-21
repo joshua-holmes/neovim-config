@@ -1,5 +1,5 @@
 local servers = {
-    "terraformls",
+    "asm_lsp",
     "bashls",
     "clangd",
     "cmake",
@@ -16,6 +16,7 @@ local servers = {
     "pyright",
     "rust-tools", -- `rust-tools` handles setting lspconfig with rust, so call lspconfig with this instead of rust_analyzer
     "sqlls",
+    "terraformls",
     "tsserver",
     "vimls",
     "yamlls",
