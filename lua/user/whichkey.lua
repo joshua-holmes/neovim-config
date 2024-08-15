@@ -9,19 +9,6 @@ autocmd FileType cpp lua C_INCLUDE_HEADER_CLEANUP()
 autocmd FileType c lua C_INCLUDE_HEADER_CLEANUP()
 ]])
 
-function C_INCLUDE_HEADER_CLEANUP()
-	which_key.register({
-		["<leader>"] = {
-			l = {
-				c = {
-					"<cmd>!clang-include-cleaner --edit " .. vim.api.nvim_buf_get_name(0) .. "<cr>",
-					'C++ "include" header cleanup',
-				},
-			},
-		},
-	})
-end
-
 local setup = {
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
@@ -45,28 +32,75 @@ local setup = {
 	-- add operators that will trigger motion and text object completion
 	-- to enable all native operators, set the preset / operators plugin above
 	-- operators = { gc = "Comments" },
-	key_labels = {
-		-- override the label used to display some keys. It doesn't effect WK in any other way.
-		-- For example:
-		-- ["<space>"] = "SPC",
-		-- ["<cr>"] = "RET",
-		-- ["<tab>"] = "TAB",
-	},
 	icons = {
 		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 		separator = "➜", -- symbol used between a key and it's label
 		group = "+", -- symbol prepended to a group
+		ellipsis = "…",
+		-- set to false to disable all mapping icons,
+		-- both those explicitely added in a mapping
+		-- and those from rules
+		mappings = true,
+		--- See `lua/which-key/icons.lua` for more details
+		--- Set to `false` to disable keymap icons from rules
+		---@type wk.IconRule[]|false
+		rules = {},
+		-- use the highlights from mini.icons
+		-- When `false`, it will use `WhichKeyIcon` instead
+		colors = true,
+		-- used by key format
+		keys = {
+			Up = " ",
+			Down = " ",
+			Left = " ",
+			Right = " ",
+			C = "󰘴 ",
+			M = "󰘵 ",
+			D = "󰘳 ",
+			S = "󰘶 ",
+			CR = "󰌑 ",
+			Esc = "󱊷 ",
+			ScrollWheelDown = "󱕐 ",
+			ScrollWheelUp = "󱕑 ",
+			NL = "󰌑 ",
+			BS = "󰁮",
+			Space = "󱁐 ",
+			Tab = "󰌒 ",
+			F1 = "󱊫",
+			F2 = "󱊬",
+			F3 = "󱊭",
+			F4 = "󱊮",
+			F5 = "󱊯",
+			F6 = "󱊰",
+			F7 = "󱊱",
+			F8 = "󱊲",
+			F9 = "󱊳",
+			F10 = "󱊴",
+			F11 = "󱊵",
+			F12 = "󱊶",
+		},
 	},
-	popup_mappings = {
+	keys = {
 		scroll_down = "<c-d>", -- binding to scroll down inside the popup
 		scroll_up = "<c-u>", -- binding to scroll up inside the popup
 	},
-	window = {
-		border = "rounded", -- none, single, double, shadow
-		position = "bottom", -- bottom, top
-		margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-		padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-		winblend = 0,
+	win = {
+		-- don't allow the popup to overlap with the cursor
+		no_overlap = true,
+		-- width = 1,
+		-- height = { min = 4, max = 25 },
+		-- col = 0,
+		-- row = math.huge,
+		border = "rounded",
+		padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
+		title = true,
+		title_pos = "center",
+		zindex = 1000,
+		-- Additional vim.wo and vim.bo options
+		bo = {},
+		wo = {
+			-- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+		},
 	},
 	layout = {
 		height = { min = 4, max = 25 }, -- min and max height of the columns
@@ -74,17 +108,9 @@ local setup = {
 		spacing = 3, -- spacing between columns
 		align = "left", -- align columns left, center or right
 	},
-	ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-	hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
 	show_help = true, -- show help message on the command line when the popup is visible
-	triggers = "auto", -- automatically setup triggers
-	-- triggers = {"<leader>"} -- or specify a list manually
-	triggers_blacklist = {
-		-- list of mode / prefixes that should never be hooked by WhichKey
-		-- this is mostly relevant for key maps that start with a native binding
-		-- most people should not need to change this
-		i = { "j", "k" },
-		v = { "j", "k" },
+	triggers = {
+		{ "<auto>", mode = "nxsot" },
 	},
 }
 
