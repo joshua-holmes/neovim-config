@@ -6,11 +6,11 @@ end
 
 gitsigns.setup {
     signs = {
-        add = { hl = "GitSignsAdd", text = " ", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-        change = { hl = "GitSignsChange", text = " ", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-        delete = { hl = "GitSignsDelete", text = " ", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-        topdelete = { hl = "GitSignsDelete", text = "󱅁 ", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-        changedelete = { hl = "GitSignsChange", text = "󰍷 ", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+        add = { link = "GitSignsAdd", text = " " },
+        change = { link = "GitSignsChange", text = " " },
+        delete = { link = "GitSignsDelete", text = " " },
+        topdelete = { link = "GitSignsDelete", text = "󱅁 " },
+        changedelete = { link = "GitSignsChange", text = "󰍷 " },
     },
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
     numhl = false,   -- Toggle with `:Gitsigns toggle_numhl`
@@ -28,9 +28,6 @@ gitsigns.setup {
         delay = 1000,
         ignore_whitespace = false,
     },
-    current_line_blame_formatter_opts = {
-        relative_time = false,
-    },
     sign_priority = 6,
     update_debounce = 100,
     status_formatter = nil, -- Use default
@@ -42,8 +39,5 @@ gitsigns.setup {
         relative = "cursor",
         row = 0,
         col = 1,
-    },
-    yadm = {
-        enable = false,
     },
 }
