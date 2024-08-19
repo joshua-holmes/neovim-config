@@ -4,11 +4,6 @@ if not status_ok then
 	return
 end
 
-vim.cmd([[
-autocmd FileType cpp lua C_INCLUDE_HEADER_CLEANUP()
-autocmd FileType c lua C_INCLUDE_HEADER_CLEANUP()
-]])
-
 local setup = {
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
