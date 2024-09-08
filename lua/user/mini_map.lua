@@ -48,4 +48,3 @@ mini_map.setup(
     }
 )
 
-mini_map.open()
