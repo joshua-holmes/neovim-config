@@ -28,7 +28,7 @@ null_ls.setup({
         formatting.black.with({ extra_args = { "--line-length", "120" } }),
         formatting.stylua,
         formatting.sqlfmt,
-        formatting.clang_format,
+        formatting.clang_format.with({ extra_args = { "--style=microsoft" } }),
         -- diagnostics.flake8
     },
 })
