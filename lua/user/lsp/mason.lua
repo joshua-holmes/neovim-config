@@ -17,7 +17,7 @@ local servers = {
     "rust-tools", -- `rust-tools` handles setting lspconfig with rust, so call lspconfig with this instead of rust_analyzer
     "sqlls",
     "terraformls",
-    "tsserver",
+    "ts_ls",
     "vimls",
     "yamlls",
     "zls",
