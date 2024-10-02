@@ -6,6 +6,7 @@ local servers = {
     "cssls",
     "cssmodules_ls",
     "dockerls",
+    "gdscript",
     "glsl_analyzer",
     "html",
     "jsonls",

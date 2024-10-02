@@ -69,6 +69,7 @@ return packer.startup(function(use)
     use "tpope/vim-sleuth"
     use "echasnovski/mini.nvim"
     use "folke/neodev.nvim"        -- Adds lua docs in neovim for neovim config files
+    use "lommix/godot.nvim"
 
     -- Colorschemes
     use "rebelot/kanagawa.nvim"
