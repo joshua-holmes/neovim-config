@@ -41,6 +41,7 @@ local servers_to_ensure_installed = {}
 local excluded_from_check = { -- add servers to exclude form mason's lspconfig compatibility check here
     "rust-tools",
     "glsl_analyzer",
+    "gdscript",
 }
 for _,s in pairs(servers) do
     local is_excluded = false;
