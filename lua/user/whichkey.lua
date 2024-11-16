@@ -147,10 +147,7 @@ which_key.add({
 		"<cmd>Bdelete!<CR>",
 		desc = "Close Buffer",
 	},
-	{
-		"<leader>d",
-		group = "Debug",
-	},
+	{ "<leader>d", group = "Debug" },
 	{
 		"<leader>db",
 		":lua require('dap').toggle_breakpoint()<cr>",
@@ -191,10 +188,7 @@ which_key.add({
 		"<cmd>NvimTreeToggle<cr>",
 		desc = "Explorer",
 	},
-	{
-		"<leader>f",
-		group = "Find",
-	},
+	{ "<leader>f", group = "Find" },
 	{
 		"<leader>ff",
 		":Telescope find_files<CR>",
@@ -210,10 +204,7 @@ which_key.add({
 		"<cmd>Telescope live_grep theme=ivy<CR>",
 		desc = "Find text",
 	},
-	{
-		"<leader>g",
-		group = "Git",
-	},
+	{ "<leader>g", group = "Git" },
 	{
 		"<leader>gR",
 		"<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
@@ -284,10 +275,7 @@ which_key.add({
 		"<cmd>nohlsearch<CR><cmd>lua require('mini.map').refresh()<CR>",
 		desc = "No Highlight",
 	},
-	{
-		"<leader>l",
-		group = "LSP",
-	},
+	{ "<leader>l", group = "LSP" },
 	{
 		"<leader>lI",
 		"<cmd>NullLsInfo<cr>",
@@ -353,10 +341,7 @@ which_key.add({
 		"<cmd>Telescope diagnostics<cr>",
 		desc = "Workspace Diagnostics",
 	},
-	{
-		"<leader>m",
-		group = "MiniMap",
-	},
+	{ "<leader>m", group = "MiniMap" },
 	{
 		"<leader>mc",
 		"<cmd>lua require('mini.map').close()<cr>",
@@ -377,10 +362,7 @@ which_key.add({
 		"<cmd>lua require('mini.map').refresh()<cr>",
 		desc = "Refresh",
 	},
-	{
-		"<leader>p",
-		group = "Packer",
-	},
+	{ "<leader>p", group = "Packer" },
 	{
 		"<leader>pS",
 		"<cmd>PackerStatus<cr>",
@@ -411,10 +393,7 @@ which_key.add({
 		"<cmd>q!<CR>",
 		desc = "Quit",
 	},
-	{
-		"<leader>s",
-		group = "Search",
-	},
+	{ "<leader>s", group = "Search" },
 	{
 		"<leader>sC",
 		"<cmd>Telescope commands<cr>",
@@ -455,10 +434,7 @@ which_key.add({
 		"<cmd>Spectre<cr>",
 		desc = "Find and replace across repo",
 	},
-	{
-		"<leader>t",
-		group = "Terminal",
-	},
+	{ "<leader>t", group = "Terminal" },
 	{
 		"<leader>tf",
 		"<cmd>ToggleTerm direction=float<cr>",
@@ -480,8 +456,14 @@ which_key.add({
 		desc = "Save",
 	},
 	{
-		mode = { "n", "v" },
-		{ "<leader>/", "gcc", desc = "Comment", nowait = true, remap = true },
+		"<leader>/",
+		"gcc",
+		desc = "Comment",
+		remap = true,
+	},
+	{
+		mode = { "v" },
+		{ "<leader>/", "gc", desc = "Comment", remap = true },
 	},
 })
 
