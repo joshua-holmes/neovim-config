@@ -54,7 +54,6 @@ return packer.startup(function(use)
     use "tamton-aquib/duck.nvim"   -- Absolutely not useful...
     use "HiPhish/rainbow-delimiters.nvim"
     use "windwp/nvim-autopairs"    -- Autopairs, integrates with both cmp and treesitter
-    use "numToStr/Comment.nvim"    -- Easily comment stuff
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
     use "akinsho/bufferline.nvim"
