@@ -55,6 +55,10 @@ keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 keymap("n", "<", "<<", opts)
 keymap("n", ">", ">>", opts)
 
+-- Macro shortcuts
+keymap("n", "M", "@q", opts)
+keymap("n", "m", "@", opts)
+
 
 -- Visual --
 -- Stay in indent mode
