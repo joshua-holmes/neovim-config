@@ -20,6 +20,7 @@ require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
 require "user.mini_map"
+require "user.mini_comment"
 require "user.dapui"
 require "user.debug"
 
