@@ -109,161 +109,380 @@ local setup = {
 	},
 }
 
-local default_opts = {
-	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
-}
-
-local function create_opts_table(mode, noremap)
-	local new_table = {}
-	for k, v in pairs(default_opts) do
-		new_table[k] = v
-	end
-	new_table["mode"] = mode
-	new_table["noremap"] = noremap
-	return new_table
-end
-
-local n_opts = create_opts_table("n", true)
-local n_opts_remap = create_opts_table("n", false)
-local v_opts_remap = create_opts_table("v", false)
-
-local n_mappings = {
-	[";"] = { "<cmd>Alpha<cr>", "Dashboard" },
-	["["] = { "<Plug>(MatchitNormalMultiBackward)", "Jump to start of contianer" },
-	["]"] = { "<Plug>(MatchitNormalMultiForward)", "Jump to end of contianer" },
-	b = {
+which_key.add({
+	nowait = true,
+	remap = false,
+	{
+		"<leader>;",
+		"<cmd>Alpha<cr>",
+		desc = "Dashboard",
+	},
+	{
+		"<leader>M",
+		":MarkdownPreviewToggle<cr>",
+		desc = "Markdown Preview Toggle",
+	},
+	{
+		"<leader>P",
+		"<cmd>lua require('telescope').extensions.projects.projects()<cr>",
+		desc = "Projects",
+	},
+	{
+		"<leader>[",
+		"<Plug>(MatchitNormalMultiBackward)",
+		desc = "Jump to start of contianer",
+	},
+	{
+		"<leader>]",
+		"<Plug>(MatchitNormalMultiForward)",
+		desc = "Jump to end of contianer",
+	},
+	{
+		"<leader>b",
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-		"Buffers",
+		desc = "Buffers",
 	},
-	d = {
-		name = "Debug",
-		b = { ":lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
-		c = { ":lua require('dap').continue()<cr>", "Continue" },
-		o = { ":lua require('dap').step_over()<cr>", "Step over" },
-		i = { ":lua require('dap').step_into()<cr>", "Step into" },
-		r = { ":lua require('dap').repl.open()<cr>", "Inspect state using REPL" },
-		l = { ":lua require('dap').run_last()<cr>", "Run last" },
-		u = { ":lua require('dapui').toggle()<cr>", "Toggle DAP UI" },
+	{
+		"<leader>c",
+		"<cmd>Bdelete!<CR>",
+		desc = "Close Buffer",
 	},
-	e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	w = { "<cmd>w!<CR>", "Save" },
-	q = { "<cmd>q!<CR>", "Quit" },
-	c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-	h = { "<cmd>nohlsearch<CR><cmd>lua require('mini.map').refresh()<CR>", "No Highlight" },
-	f = {
-		name = "Find",
-		f = {
-			":Telescope find_files<CR>",
-			"Find files",
-		},
-		t = { "<cmd>Telescope live_grep theme=ivy<CR>", "Find text" },
-		p = { "<cmd>Telescope media_files<CR>", "Find photos" },
+	{
+		"<leader>d",
+		group = "Debug",
 	},
-	P = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-
-	p = {
-		name = "Packer",
-		c = { "<cmd>PackerCompile<cr>", "Compile" },
-		i = { "<cmd>PackerInstall<cr>", "Install" },
-		s = { "<cmd>PackerSync<cr>", "Sync" },
-		S = { "<cmd>PackerStatus<cr>", "Status" },
-		u = { "<cmd>PackerUpdate<cr>", "Update" },
+	{
+		"<leader>db",
+		":lua require('dap').toggle_breakpoint()<cr>",
+		desc = "Toggle breakpoint",
 	},
-
-	g = {
-		name = "Git",
-		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-		u = {
-			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-			"Undo Stage Hunk",
-		},
-		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-		d = {
-			"<cmd>Gitsigns diffthis HEAD vertical=true<cr>",
-			"Diff",
-		},
+	{
+		"<leader>dc",
+		":lua require('dap').continue()<cr>",
+		desc = "Continue",
 	},
-
-	l = {
-		name = "LSP",
-		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-		d = {
-			"<cmd>Telescope diagnostics bufnr=0<cr>",
-			"Document Diagnostics",
-		},
-		w = {
-			"<cmd>Telescope diagnostics<cr>",
-			"Workspace Diagnostics",
-		},
-		f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
-		i = { "<cmd>LspInfo<cr>", "Info" },
-		I = { "<cmd>NullLsInfo<cr>", "Formater Info" },
-		j = {
-			"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-			"Next Diagnostic",
-		},
-		k = {
-			"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-			"Prev Diagnostic",
-		},
-		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-		S = {
-			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-			"Workspace Symbols",
-		},
+	{
+		"<leader>di",
+		":lua require('dap').step_into()<cr>",
+		desc = "Step into",
 	},
-	m = {
-		name = "MiniMap",
-		m = { "<cmd>lua require('mini.map').toggle()<cr>", "Toggle" },
-		r = { "<cmd>lua require('mini.map').refresh()<cr>", "Refresh" },
-		o = { "<cmd>lua require('mini.map').open()<cr>", "Open" },
-		c = { "<cmd>lua require('mini.map').close()<cr>", "Close" },
+	{
+		"<leader>dl",
+		":lua require('dap').run_last()<cr>",
+		desc = "Run last",
 	},
-	M = { ":MarkdownPreviewToggle<cr>", "Markdown Preview Toggle" },
-	s = {
-		name = "Search",
-		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-		R = { "<cmd>Telescope registers<cr>", "Registers" },
-		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-		C = { "<cmd>Telescope commands<cr>", "Commands" },
-		w = { "<cmd>Spectre<cr>", "Find and replace across repo" },
+	{
+		"<leader>do",
+		":lua require('dap').step_over()<cr>",
+		desc = "Step over",
 	},
-
-	t = {
-		name = "Terminal",
-		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+	{
+		"<leader>dr",
+		":lua require('dap').repl.open()<cr>",
+		desc = "Inspect state using REPL",
 	},
-}
-
-local n_mappings_remap = {
-	["/"] = { "gcc", "Comment" },
-}
-
-local v_mappings_remap = {
-	["/"] = { "gc", "Comment" },
-}
+	{
+		"<leader>du",
+		":lua require('dapui').toggle()<cr>",
+		desc = "Toggle DAP UI",
+	},
+	{
+		"<leader>e",
+		"<cmd>NvimTreeToggle<cr>",
+		desc = "Explorer",
+	},
+	{
+		"<leader>f",
+		group = "Find",
+	},
+	{
+		"<leader>ff",
+		":Telescope find_files<CR>",
+		desc = "Find files",
+	},
+	{
+		"<leader>fp",
+		"<cmd>Telescope media_files<CR>",
+		desc = "Find photos",
+	},
+	{
+		"<leader>ft",
+		"<cmd>Telescope live_grep theme=ivy<CR>",
+		desc = "Find text",
+	},
+	{
+		"<leader>g",
+		group = "Git",
+	},
+	{
+		"<leader>gR",
+		"<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
+		desc = "Reset Buffer",
+	},
+	{
+		"<leader>gb",
+		"<cmd>Telescope git_branches<cr>",
+		desc = "Checkout branch",
+	},
+	{
+		"<leader>gc",
+		"<cmd>Telescope git_commits<cr>",
+		desc = "Checkout commit",
+	},
+	{
+		"<leader>gd",
+		"<cmd>Gitsigns diffthis HEAD vertical=true<cr>",
+		desc = "Diff",
+	},
+	{
+		"<leader>gg",
+		"<cmd>lua _LAZYGIT_TOGGLE()<CR>",
+		desc = "Lazygit",
+	},
+	{
+		"<leader>gj",
+		"<cmd>lua require 'gitsigns'.next_hunk()<cr>",
+		desc = "Next Hunk",
+	},
+	{
+		"<leader>gk",
+		"<cmd>lua require 'gitsigns'.prev_hunk()<cr>",
+		desc = "Prev Hunk",
+	},
+	{
+		"<leader>gl",
+		"<cmd>lua require 'gitsigns'.blame_line()<cr>",
+		desc = "Blame",
+	},
+	{
+		"<leader>go",
+		"<cmd>Telescope git_status<cr>",
+		desc = "Open changed file",
+	},
+	{
+		"<leader>gp",
+		"<cmd>lua require 'gitsigns'.preview_hunk()<cr>",
+		desc = "Preview Hunk",
+	},
+	{
+		"<leader>gr",
+		"<cmd>lua require 'gitsigns'.reset_hunk()<cr>",
+		desc = "Reset Hunk",
+	},
+	{
+		"<leader>gs",
+		"<cmd>lua require 'gitsigns'.stage_hunk()<cr>",
+		desc = "Stage Hunk",
+	},
+	{
+		"<leader>gu",
+		"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+		desc = "Undo Stage Hunk",
+	},
+	{
+		"<leader>h",
+		"<cmd>nohlsearch<CR><cmd>lua require('mini.map').refresh()<CR>",
+		desc = "No Highlight",
+	},
+	{
+		"<leader>l",
+		group = "LSP",
+	},
+	{
+		"<leader>lI",
+		"<cmd>NullLsInfo<cr>",
+		desc = "Formater Info",
+	},
+	{
+		"<leader>lS",
+		"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+		desc = "Workspace Symbols",
+	},
+	{
+		"<leader>la",
+		"<cmd>lua vim.lsp.buf.code_action()<cr>",
+		desc = "Code Action",
+	},
+	{
+		"<leader>ld",
+		"<cmd>Telescope diagnostics bufnr=0<cr>",
+		desc = "Document Diagnostics",
+	},
+	{
+		"<leader>lf",
+		"<cmd>lua vim.lsp.buf.format{async=true}<cr>",
+		desc = "Format",
+	},
+	{
+		"<leader>li",
+		"<cmd>LspInfo<cr>",
+		desc = "Info",
+	},
+	{
+		"<leader>lj",
+		"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+		desc = "Next Diagnostic",
+	},
+	{
+		"<leader>lk",
+		"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+		desc = "Prev Diagnostic",
+	},
+	{
+		"<leader>ll",
+		"<cmd>lua vim.lsp.codelens.run()<cr>",
+		desc = "CodeLens Action",
+	},
+	{
+		"<leader>lq",
+		"<cmd>lua vim.diagnostic.setloclist()<cr>",
+		desc = "Quickfix",
+	},
+	{
+		"<leader>lr",
+		"<cmd>lua vim.lsp.buf.rename()<cr>",
+		desc = "Rename",
+	},
+	{
+		"<leader>ls",
+		"<cmd>Telescope lsp_document_symbols<cr>",
+		desc = "Document Symbols",
+	},
+	{
+		"<leader>lw",
+		"<cmd>Telescope diagnostics<cr>",
+		desc = "Workspace Diagnostics",
+	},
+	{
+		"<leader>m",
+		group = "MiniMap",
+	},
+	{
+		"<leader>mc",
+		"<cmd>lua require('mini.map').close()<cr>",
+		desc = "Close",
+	},
+	{
+		"<leader>mm",
+		"<cmd>lua require('mini.map').toggle()<cr>",
+		desc = "Toggle",
+	},
+	{
+		"<leader>mo",
+		"<cmd>lua require('mini.map').open()<cr>",
+		desc = "Open",
+	},
+	{
+		"<leader>mr",
+		"<cmd>lua require('mini.map').refresh()<cr>",
+		desc = "Refresh",
+	},
+	{
+		"<leader>p",
+		group = "Packer",
+	},
+	{
+		"<leader>pS",
+		"<cmd>PackerStatus<cr>",
+		desc = "Status",
+	},
+	{
+		"<leader>pc",
+		"<cmd>PackerCompile<cr>",
+		desc = "Compile",
+	},
+	{
+		"<leader>pi",
+		"<cmd>PackerInstall<cr>",
+		desc = "Install",
+	},
+	{
+		"<leader>ps",
+		"<cmd>PackerSync<cr>",
+		desc = "Sync",
+	},
+	{
+		"<leader>pu",
+		"<cmd>PackerUpdate<cr>",
+		desc = "Update",
+	},
+	{
+		"<leader>q",
+		"<cmd>q!<CR>",
+		desc = "Quit",
+	},
+	{
+		"<leader>s",
+		group = "Search",
+	},
+	{
+		"<leader>sC",
+		"<cmd>Telescope commands<cr>",
+		desc = "Commands",
+	},
+	{
+		"<leader>sM",
+		"<cmd>Telescope man_pages<cr>",
+		desc = "Man Pages",
+	},
+	{
+		"<leader>sR",
+		"<cmd>Telescope registers<cr>",
+		desc = "Registers",
+	},
+	{
+		"<leader>sc",
+		"<cmd>Telescope colorscheme<cr>",
+		desc = "Colorscheme",
+	},
+	{
+		"<leader>sh",
+		"<cmd>Telescope help_tags<cr>",
+		desc = "Find Help",
+	},
+	{
+		"<leader>sk",
+		"<cmd>Telescope keymaps<cr>",
+		desc = "Keymaps",
+	},
+	{
+		"<leader>sr",
+		"<cmd>Telescope oldfiles<cr>",
+		desc = "Open Recent File",
+	},
+	{
+		"<leader>sw",
+		"<cmd>Spectre<cr>",
+		desc = "Find and replace across repo",
+	},
+	{
+		"<leader>t",
+		group = "Terminal",
+	},
+	{
+		"<leader>tf",
+		"<cmd>ToggleTerm direction=float<cr>",
+		desc = "Float",
+	},
+	{
+		"<leader>th",
+		"<cmd>ToggleTerm size=10 direction=horizontal<cr>",
+		desc = "Horizontal",
+	},
+	{
+		"<leader>tv",
+		"<cmd>ToggleTerm size=80 direction=vertical<cr>",
+		desc = "Vertical",
+	},
+	{
+		"<leader>w",
+		"<cmd>w!<CR>",
+		desc = "Save",
+	},
+	{
+		mode = { "n", "v" },
+		{ "<leader>/", "gcc", desc = "Comment", nowait = true, remap = true },
+	},
+})
 
 which_key.setup(setup)
-which_key.register(n_mappings, n_opts)
-which_key.register(n_mappings_remap, n_opts_remap)
-which_key.register(v_mappings_remap, v_opts_remap)
