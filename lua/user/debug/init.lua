@@ -5,5 +5,9 @@ if not nvim_dap_ok then
 end
 
 require "user.debug.rust"
+require "user.debug.python"
+
+vim.fn.sign_define("DapBreakpoint", { text = "🛑" })
+vim.fn.sign_define("DapStopped", { text = "↪" })
 
 nvim_dap_projects.search_project_config() -- this line must be at bottom of file
