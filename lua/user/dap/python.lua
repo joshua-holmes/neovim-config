@@ -7,7 +7,7 @@ end
 dap.adapters.python = {
     type = "executable",
     command = "python",
-	args = { "-m", "debugpy.adapter" },
+    args = { "-m", "debugpy.adapter" },
 }
 
 dap.configurations.python = {
