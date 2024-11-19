@@ -24,7 +24,7 @@ local configs = {
     },
     python = {
         type = "python",
-        program = "main.py",
+        program = "${file}",
         justMyCode = false,
     }
 }
