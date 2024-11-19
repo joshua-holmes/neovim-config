@@ -4,8 +4,8 @@ if not nvim_dap_ok then
 	return
 end
 
-require "user.dap.gdb"
-require "user.dap.python"
+require "user.dap.adapters"
+require "user.dap.configurations"
 
 vim.fn.sign_define("DapBreakpoint", { text = "🛑" })
 vim.fn.sign_define("DapStopped", { text = "↪" })
