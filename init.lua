@@ -22,7 +22,7 @@ require "user.autocommands"
 require "user.mini_map"
 require "user.mini_comment"
 require "user.dapui"
-require "user.debug"
+require "user.dap"
 
 -- order matters
 require "user.neodev" -- before lsp

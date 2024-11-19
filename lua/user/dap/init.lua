@@ -4,8 +4,8 @@ if not nvim_dap_ok then
 	return
 end
 
-require "user.debug.rust"
-require "user.debug.python"
+require "user.dap.rust"
+require "user.dap.python"
 
 vim.fn.sign_define("DapBreakpoint", { text = "🛑" })
 vim.fn.sign_define("DapStopped", { text = "↪" })
