@@ -20,11 +20,12 @@ local configs = {
 	},
     zig = {
         type = "lldb_dap",
-        program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}"
+        program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
     },
     python = {
         type = "python",
         program = "main.py",
+	justMyCode = false,
     }
 }
 -----------------------------------------------------------
