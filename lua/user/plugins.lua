@@ -113,7 +113,7 @@ return packer.startup(function(use)
 
     -- Debugging
     use "mfussenegger/nvim-dap"
-    use "ldelossa/nvim-dap-projects"
+    use "joshua-holmes/dap-projects.nvim"
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
     use "nvim-telescope/telescope-dap.nvim"
 
