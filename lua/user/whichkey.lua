@@ -179,7 +179,7 @@ which_key.add({
 		desc = "Inspect state using REPL",
 	},
 	{
-		"<leader>dt",
+		"<leader>du",
 		":lua require('dapui').toggle()<cr>",
 		desc = "Toggle DAP UI",
 	},
