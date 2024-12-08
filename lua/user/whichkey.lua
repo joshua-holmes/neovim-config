@@ -179,6 +179,11 @@ which_key.add({
 		desc = "Inspect state using REPL",
 	},
 	{
+		"<leader>dR",
+		":lua require('dap-projects').search_project_config()<cr>",
+		desc = "Reload project-level dap config",
+	},
+	{
 		"<leader>du",
 		":lua require('dapui').toggle()<cr>",
 		desc = "Toggle DAP UI",
