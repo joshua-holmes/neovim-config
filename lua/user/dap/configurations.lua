@@ -19,7 +19,7 @@ local configs = {
         program = "${workspaceFolder}/target/debug/${workspaceFolderBasename}",
     },
     zig = {
-        type = "lldb_dap",
+        type = "gdb",
         program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
     },
     python = {
