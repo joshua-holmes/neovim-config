@@ -73,6 +73,12 @@ return packer.startup(function(use)
     -- Colorschemes
     use "rebelot/kanagawa.nvim"
     use "savq/melange-nvim"
+    use {
+        "ribru17/bamboo.nvim",
+        config = function()
+            require("bamboo").setup()
+        end
+    }
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp"      -- The completion plugin
