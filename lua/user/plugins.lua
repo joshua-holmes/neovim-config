@@ -50,7 +50,11 @@ return packer.startup(function(use)
         run = function() fn["mkdp#util#install"]() end,
     }
     use "nvim-pack/nvim-spectre"   -- Tool to replace all text in entire git repo
-    use "simrat39/rust-tools.nvim" -- Useful tools for programming in Rust
+    use {
+        "mrcjkb/rustaceanvim",
+        version = "^5",
+        lazy = false,
+    }
     use "tamton-aquib/duck.nvim"   -- Absolutely not useful...
     use "HiPhish/rainbow-delimiters.nvim"
     use "windwp/nvim-autopairs"    -- Autopairs, integrates with both cmp and treesitter
