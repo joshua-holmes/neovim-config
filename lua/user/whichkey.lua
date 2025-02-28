@@ -134,6 +134,11 @@ which_key.add({
 		desc = "Act as mode",
 	},
 	{
+		"<leader>ae",
+		"<cmd>ChatGPTEditWithInstructions<cr>",
+		desc = "Edit with instructions",
+	},
+	{
 		"<leader>M",
 		":MarkdownPreviewToggle<cr>",
 		desc = "Markdown Preview Toggle",
