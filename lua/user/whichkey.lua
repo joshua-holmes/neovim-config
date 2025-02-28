@@ -117,6 +117,22 @@ which_key.add({
 		"<cmd>Alpha<cr>",
 		desc = "Dashboard",
 	},
+	{ "<leader>a", group = "AI Assistant" },
+	{
+		"<leader>ac",
+		"<cmd>ChatGPT<cr>",
+		desc = "Chat",
+	},
+	{
+		"<leader>at",
+		"<cmd>ChatGPTRun add_tests<cr>",
+		desc = "Add tests",
+	},
+	{
+		"<leader>aa",
+		"<cmd>ChatGPTActAs<cr>",
+		desc = "Act as mode",
+	},
 	{
 		"<leader>M",
 		":MarkdownPreviewToggle<cr>",

@@ -23,6 +23,7 @@ require "user.mini_map"
 require "user.mini_comment"
 require "user.dapui"
 require "user.dap"
+require "user.chatgpt"
 
 -- order matters
 require "user.neodev" -- before lsp
