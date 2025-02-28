@@ -142,11 +142,6 @@ which_key.add({
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		desc = "Buffers",
 	},
-	{
-		"<leader>c",
-		"<cmd>Bdelete!<CR>",
-		desc = "Close Buffer",
-	},
 	{ "<leader>d", group = "Debug" },
 	{
 		"<leader>db",
