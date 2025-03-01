@@ -117,26 +117,30 @@ which_key.add({
 		"<cmd>Alpha<cr>",
 		desc = "Dashboard",
 	},
-	{ "<leader>a", group = "AI Assistant" },
+	{ "<leader>a", group = "AI Assistant", mode = { "n", "v" } },
 	{
 		"<leader>ac",
 		"<cmd>ChatGPT<cr>",
 		desc = "Chat",
+		mode = {"n", "v"}
 	},
 	{
 		"<leader>at",
 		"<cmd>ChatGPTRun add_tests<cr>",
 		desc = "Add tests",
+		mode = {"n", "v"}
 	},
 	{
 		"<leader>aa",
 		"<cmd>ChatGPTActAs<cr>",
 		desc = "Act as mode",
+		mode = {"n", "v"}
 	},
 	{
 		"<leader>ae",
 		"<cmd>ChatGPTEditWithInstructions<cr>",
 		desc = "Edit with instructions",
+		mode = {"n", "v"}
 	},
 	{
 		"<leader>M",
