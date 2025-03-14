@@ -18,7 +18,10 @@ return {
 		end,
 		default_settings = {
 			-- rust-analyzer language server configuration
-			["rust-analyzer"] = {},
+			["rust-analyzer"] = {
+				-- put cargo features here as a list of strings
+				cargo_features = {},
+			},
 		},
 	},
 	-- DAP configuration
