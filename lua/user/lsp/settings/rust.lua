@@ -19,8 +19,12 @@ return {
 		default_settings = {
 			-- rust-analyzer language server configuration
 			["rust-analyzer"] = {
-				-- put cargo features here as a list of strings
-				cargo_features = {},
+				cargo = {
+					-- desired target as string, if target is different than host
+					target = nil,
+					-- cargo features here as a list of strings
+					features = {},
+				},
 			},
 		},
 	},
