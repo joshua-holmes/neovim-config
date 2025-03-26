@@ -146,9 +146,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Mercurial
-	use("jackysee/telescope-hg.nvim")
-
 	-- Debugging
 	use("mfussenegger/nvim-dap")
 	use("joshua-holmes/dap-projects.nvim")
