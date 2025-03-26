@@ -24,6 +24,7 @@ require "user.mini_comment"
 require "user.dapui"
 require "user.dap"
 require "user.chatgpt"
+require "user.neogit"
 
 -- order matters
 require "user.neodev" -- before lsp

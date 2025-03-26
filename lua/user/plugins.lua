@@ -118,6 +118,16 @@ return packer.startup(function(use)
     -- Git
     use "lewis6991/gitsigns.nvim"
     use {
+        "NeogitOrg/neogit",
+        requires = {
+            "nvim-lua/plenary.nvim",         -- required
+            "sindrets/diffview.nvim",        -- optional - Diff integration
+
+            -- Only one of these is needed.
+            "nvim-telescope/telescope.nvim", -- optional
+        },
+    }
+    use {
         "kdheepak/lazygit.nvim",
         requires = {
             "nvim-lua/plenary.nvim",
