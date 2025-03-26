@@ -137,6 +137,12 @@ return packer.startup(function(use)
             require("telescope").load_extension("lazygit")
         end,
     }
+    use {
+        "mrloop/telescope-git-branch.nvim",
+        config = function()
+            require("telescope").load_extension("git_branch")
+        end
+    }
 
     -- Mercurial
     use "jackysee/telescope-hg.nvim"
