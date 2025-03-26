@@ -117,6 +117,16 @@ return packer.startup(function(use)
 
     -- Git
     use "lewis6991/gitsigns.nvim"
+    use {
+        "kdheepak/lazygit.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("telescope").load_extension("lazygit")
+        end,
+    }
 
     -- Mercurial
     use "jackysee/telescope-hg.nvim"
@@ -135,7 +145,7 @@ return packer.startup(function(use)
           "nvim-lua/plenary.nvim",
           "folke/trouble.nvim",
           "nvim-telescope/telescope.nvim"
-        }
+        },
     })
 
     -- Automatically set up your configuration after cloning packer.nvim

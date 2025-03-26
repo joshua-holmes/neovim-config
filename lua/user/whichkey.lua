@@ -252,7 +252,7 @@ which_key.add({
 	},
 	{
 		"<leader>gg",
-		"<cmd>lua _LAZYGIT_TOGGLE()<CR>",
+		"<cmd>LazyGit<cr>",
 		desc = "Lazygit",
 	},
 	{
