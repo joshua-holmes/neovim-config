@@ -10,6 +10,12 @@ dap.adapters.gdb = {
     args = { "--quiet", "--interpreter=dap", }
 }
 
+dap.adapters.rust_gdb = {
+    type = "executable",
+    command = "rust-gdb",
+    args = { "--quiet", "--interpreter=dap", }
+}
+
 dap.adapters.lldb_dap = {
     type = "executable",
     command = "lldb-dap",

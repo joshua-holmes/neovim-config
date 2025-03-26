@@ -15,7 +15,7 @@ local base_config = {
 -- NOTE: env var "DEBUG_EP" will override the "program" property
 local configs = {
     rust = {
-        type = "gdb",
+        type = "rust_gdb",
         program = "${workspaceFolder}/target/debug/${workspaceFolderBasename}",
     },
     zig = {
