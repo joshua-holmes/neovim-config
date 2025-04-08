@@ -259,8 +259,8 @@ which_key.add({
     },
     {
         "<leader>gg",
-        "<cmd>LazyGit<cr>",
-        desc = "Lazygit",
+        "<cmd>Neogit<cr>",
+        desc = "Neogit",
     },
     {
         "<leader>gj",

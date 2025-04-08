@@ -130,16 +130,6 @@ return packer.startup(function(use)
         },
     })
     use({
-        "kdheepak/lazygit.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        config = function()
-            require("telescope").load_extension("lazygit")
-        end,
-    })
-    use({
         "mrloop/telescope-git-branch.nvim",
         config = function()
             require("telescope").load_extension("git_branch")
