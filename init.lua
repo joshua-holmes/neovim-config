@@ -25,8 +25,4 @@ require("user.dapui")
 require("user.dap")
 require("user.neogit")
 require("user.codecompanion")
-
--- order matters
-require("user.neodev") -- before lsp
-require("user.lsp") -- after neodev
---
+require("user.lsp")
