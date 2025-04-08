@@ -129,12 +129,7 @@ return packer.startup(function(use)
             "nvim-telescope/telescope.nvim", -- optional
         },
     })
-    use({
-        "mrloop/telescope-git-branch.nvim",
-        config = function()
-            require("telescope").load_extension("git_branch")
-        end,
-    })
+    use("mrloop/telescope-git-branch.nvim")
 
     -- Debugging
     use("mfussenegger/nvim-dap")

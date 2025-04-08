@@ -27,6 +27,8 @@ for _, glob in ipairs(globs) do
     table.insert(rg_find_command, glob)
 end
 
+telescope.load_extension("git_branch")
+
 telescope.setup({
     defaults = {
 
