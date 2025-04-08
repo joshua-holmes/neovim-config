@@ -117,30 +117,37 @@ which_key.add({
 		"<cmd>Alpha<cr>",
 		desc = "Dashboard",
 	},
-	{ "<leader>a", group = "AI Assistant", mode = { "n", "v" } },
 	{
-		"<leader>ac",
-		"<cmd>ChatGPT<cr>",
-		desc = "Chat",
-		mode = {"n", "v"}
-	},
-	{
-		"<leader>at",
-		"<cmd>ChatGPTRun add_tests<cr>",
-		desc = "Add tests",
-		mode = {"n", "v"}
-	},
-	{
-		"<leader>aa",
-		"<cmd>ChatGPTActAs<cr>",
-		desc = "Act as mode",
-		mode = {"n", "v"}
-	},
-	{
-		"<leader>ae",
-		"<cmd>ChatGPTEditWithInstructions<cr>",
-		desc = "Edit with instructions",
-		mode = {"n", "v"}
+		mode = { "n", "v" },
+		{ "<leader>a", group = "AI Assistant" },
+		{
+			"<leader>ac",
+			"<cmd>CodeCompanionChat toggle<cr>",
+			desc = "Chat",
+		},
+		{
+			"<leader>aa",
+			"<cmd>CodeCompanionActions<cr>",
+			desc = "Actions",
+		},
+		{
+			"<leader>ae",
+			"<cmd>CodeCompanion /explain<cr>",
+			desc = "Explain",
+			mode = {"v"}
+		},
+		{
+			"<leader>ae",
+			"<cmd>CodeCompanion #buffer /explain<cr>",
+			desc = "Explain",
+			mode = {"n"}
+		},
+		{
+			"<leader>at",
+			"<cmd>CodeCompanion /tests<cr>",
+			desc = "Write unit tests",
+			mode = {"v"}
+		},
 	},
 	{
 		"<leader>M",

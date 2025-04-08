@@ -97,6 +97,7 @@ cmp.setup {
         }),
     },
     formatting = {
+        expandable_indicator = true,
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
             -- Kind icons

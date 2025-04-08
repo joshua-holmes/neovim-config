@@ -154,12 +154,10 @@ return packer.startup(function(use)
 
 	-- AI Code Completion
 	use({
-		"jackMort/ChatGPT.nvim",
+		"olimorris/codecompanion.nvim",
 		requires = {
-			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
-			"folke/trouble.nvim",
-			"nvim-telescope/telescope.nvim",
+			"nvim-treesitter/nvim-treesitter",
 		},
 	})
 
