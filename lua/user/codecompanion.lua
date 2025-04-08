@@ -5,6 +5,11 @@ if not status_ok then
 end
 
 cc.setup({
+    display = {
+        diff = {
+            provider = "mini_diff",
+        },
+    },
     strategies = {
         chat = { adapter = "openai" },
         inline = { adapter = "openai" },

@@ -497,7 +497,7 @@ which_key.add({
     {
         "<leader><tab>",
         group = "Tab",
-        mode = {"n", "v"},
+        mode = { "n", "v" },
         {
             "<leader><tab><tab>",
             "<cmd>tabclose<cr>",
