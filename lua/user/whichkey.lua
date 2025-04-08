@@ -118,8 +118,9 @@ which_key.add({
         desc = "Dashboard",
     },
     {
+        "<leader>a",
+        group = "AI Assistant",
         mode = { "n", "v" },
-        { "<leader>a", group = "AI Assistant" },
         {
             "<leader>ac",
             "<cmd>CodeCompanionChat toggle<cr>",
@@ -254,7 +255,7 @@ which_key.add({
     },
     {
         "<leader>gd",
-        "<cmd>Gitsigns diffthis HEAD vertical=true<cr>",
+        "<cmd>DiffviewOpen<cr>",
         desc = "Diff",
     },
     {
@@ -492,6 +493,26 @@ which_key.add({
         "gcc",
         desc = "Comment",
         remap = true,
+    },
+    {
+        "<leader><tab>",
+        group = "Tab",
+        mode = {"n", "v"},
+        {
+            "<leader><tab><tab>",
+            "<cmd>tabclose<cr>",
+            desc = "Close tab",
+        },
+        {
+            "<leader><tab>n",
+            "<cmd>tabnext<cr>",
+            desc = "Next tab",
+        },
+        {
+            "<leader><tab>p",
+            "<cmd>tabprevious<cr>",
+            desc = "Previous tab",
+        },
     },
     {
         mode = { "v" },

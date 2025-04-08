@@ -118,6 +118,7 @@ return packer.startup(function(use)
     use("JoosepAlviste/nvim-ts-context-commentstring")
 
     -- Git
+    use("sindrets/diffview.nvim")
     use("lewis6991/gitsigns.nvim")
     use({
         "NeogitOrg/neogit",
