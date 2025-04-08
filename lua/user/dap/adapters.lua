@@ -7,13 +7,13 @@ end
 dap.adapters.gdb = {
     type = "executable",
     command = "gdb",
-    args = { "--quiet", "--interpreter=dap", }
+    args = { "--quiet", "--interpreter=dap" },
 }
 
 dap.adapters.rust_gdb = {
     type = "executable",
     command = "rust-gdb",
-    args = { "--quiet", "--interpreter=dap", }
+    args = { "--quiet", "--interpreter=dap" },
 }
 
 dap.adapters.lldb_dap = {

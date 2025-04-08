@@ -19,12 +19,10 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
-
 -- All modes --
 -- Select all text
 keymap("", "<C-z>", "<esc>gg<S-v><S-g>", opts)
 keymap("", "<C-s>", "<esc><C-s>", opts)
-
 
 -- Normal --
 -- Better window navigation
@@ -59,7 +57,6 @@ keymap("n", ">", ">>", opts)
 keymap("n", "M", "@q", opts)
 keymap("n", "m", "@", opts)
 
-
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv^", opts)
@@ -68,7 +65,6 @@ keymap("v", ">", ">gv^", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
-
 
 -- Insert --
 

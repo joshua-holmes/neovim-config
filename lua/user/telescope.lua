@@ -4,19 +4,18 @@ if not status_ok then
     return
 end
 
-telescope.load_extension('media_files')
+telescope.load_extension("media_files")
 
 ---- hg extension, just in case you run across a repo that uses it
 -- telescope.load_extension('hg')
 
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 
 -- I don't want to search in the `.git` or `.hg` (mercurial) directory.
 local globs = {
     "!**/.git/*",
     "!**/.hg/*",
 }
-
 
 local rg_find_command = {
     "rg",
@@ -28,7 +27,7 @@ for _, glob in ipairs(globs) do
     table.insert(rg_find_command, glob)
 end
 
-telescope.setup {
+telescope.setup({
     defaults = {
 
         prompt_prefix = " ",
@@ -126,12 +125,12 @@ telescope.setup {
             -- filetypes whitelist
             -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
             filetypes = { "png", "webp", "jpg", "jpeg" },
-            find_cmd = "rg" -- find command (defaults to `fd`)
-        }
+            find_cmd = "rg", -- find command (defaults to `fd`)
+        },
         -- Your extension configuration goes here:
         -- extension_name = {
         --   extension_config_key = value,
         -- }
         -- please take a look at the readme of the extension you want to configure
     },
-}
+})

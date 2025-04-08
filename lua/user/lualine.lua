@@ -22,7 +22,7 @@ local diff = {
     "diff",
     colored = true,
     symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-    cond = hide_in_width
+    cond = hide_in_width,
 }
 
 local filetype = {
@@ -45,7 +45,6 @@ local location = {
 local spaces = function()
     return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
-
 
 lualine.setup({
     options = {

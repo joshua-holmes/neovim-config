@@ -5,8 +5,8 @@ for _, ft in ipairs(filetypes) do
     vim.filetype.add({
         pattern = {
             -- pattern must end with .<ft> where <ft> is one of the filetypes above
-            ["(.+)(%." .. ft .. ")"] = "glsl"
-        }
+            ["(.+)(%." .. ft .. ")"] = "glsl",
+        },
     })
 end
 

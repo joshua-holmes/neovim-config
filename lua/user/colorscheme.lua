@@ -14,4 +14,3 @@ end
 -- end
 --
 -- pywal.setup()
-

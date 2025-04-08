@@ -8,7 +8,7 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-nvim_tree.setup {
+nvim_tree.setup({
     update_focused_file = {
         enable = true,
         update_cwd = true,
@@ -58,4 +58,4 @@ nvim_tree.setup {
     filters = {
         git_ignored = false,
     },
-}
+})

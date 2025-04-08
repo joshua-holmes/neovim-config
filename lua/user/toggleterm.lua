@@ -28,7 +28,7 @@ toggleterm.setup({
 })
 
 local function wrap_cmd(cmd, exit_after_run)
-    local end_cmd = "; echo \"\nneovim finished running cmd with code $?:\" && echo '" .. cmd .. "'"
+    local end_cmd = '; echo "\nneovim finished running cmd with code $?:" && echo \'' .. cmd .. "'"
     if not exit_after_run then
         end_cmd = end_cmd .. " && sleep 1d"
     end
@@ -40,7 +40,7 @@ function _G.set_terminal_keymaps()
     vim.api.nvim_buf_set_keymap(0, "t", "<A-\\>", [[<C-\><C-n>]], opts)
 end
 
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 local Terminal = require("toggleterm.terminal").Terminal
 
@@ -75,8 +75,14 @@ local open_servo = Terminal:new({ hidden = true })
 function _OPEN_SERVO()
     local cur_buffer_dir = vim.api.nvim_buf_get_name(0)
     local log_out = "servo.log"
-    open_servo.cmd = wrap_cmd("nohup ./mach run -d -- --pref layout.flexbox.enabled " ..
-        cur_buffer_dir .. " > " .. log_out .. " 2>&1 & sleep 0.1", true)
+    open_servo.cmd = wrap_cmd(
+        "nohup ./mach run -d -- --pref layout.flexbox.enabled "
+            .. cur_buffer_dir
+            .. " > "
+            .. log_out
+            .. " 2>&1 & sleep 0.1",
+        true
+    )
     open_servo:toggle()
 end
 

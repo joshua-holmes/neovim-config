@@ -26,14 +26,14 @@ local configs = {
         type = "python",
         program = "${file}",
         justMyCode = false,
-    }
+    },
 }
 -----------------------------------------------------------
 
 -- copy base_config into each config, without overwriting, then set dap.configurations
 local ep = os.getenv("DEBUG_EP")
 if ep then
-    vim.notify("[config] Using debug endpoint \"" .. ep .. "\"", vim.log.levels.INFO, nil)
+    vim.notify('[config] Using debug endpoint "' .. ep .. '"', vim.log.levels.INFO, nil)
 end
 for lang, config in pairs(configs) do
     for key, value in pairs(base_config) do

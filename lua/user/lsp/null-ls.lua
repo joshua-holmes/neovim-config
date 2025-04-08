@@ -21,14 +21,16 @@ null_ls.setup({
     sources = {
         formatting.prettier.with({
             extra_args = {
-                "--tab-width", "2",
-                "--semi", "true",
-            }
+                "--tab-width",
+                "2",
+                "--semi",
+                "true",
+            },
         }),
         formatting.black.with({ extra_args = { "--line-length", "120" } }),
         formatting.stylua,
         formatting.sqlfmt,
         formatting.clang_format,
-        -- diagnostics.flake8
+        formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
     },
 })

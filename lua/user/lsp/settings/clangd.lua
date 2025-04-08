@@ -1,4 +1,4 @@
 return {
-	cmd = { "clangd", "--background-index", "--clang-tidy" },
-	filetypes = { "c", "h" },
+    cmd = { "clangd", "--background-index", "--clang-tidy" },
+    filetypes = { "c", "h" },
 }
