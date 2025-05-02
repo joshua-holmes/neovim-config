@@ -15,6 +15,14 @@ return {
             vim.keymap.set("n", "gh", function()
                 vim.cmd.RustLsp({ "hover", "actions" })
             end, { silent = true, buffer = bufnr })
+
+            -- force border around hover windows
+            local orig_open_floating_preview = vim.lsp.util.open_floating_preview
+            vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+              opts = opts or {}
+              opts.border = opts.border or "rounded"
+              return orig_open_floating_preview(contents, syntax, opts, ...)
+            end
         end,
         default_settings = {
             -- rust-analyzer language server configuration
