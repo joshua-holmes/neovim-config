@@ -29,7 +29,7 @@ return {
             ["rust-analyzer"] = {
                 cargo = {
                     -- desired target as string, if target is different than host
-                    target = nil,
+                    target_os = nil,
                     -- cargo features here as a list of strings
                     features = {},
                 },
