@@ -62,6 +62,7 @@ require("mason-lspconfig").setup({
     automatic_enable = {
         exclude = {
             "rust_analyzer", -- letting rustaceanvim handle it
+            "pyright", -- something already starts this, not sure what
         }
     }
 })
