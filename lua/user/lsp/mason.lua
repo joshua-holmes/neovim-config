@@ -16,6 +16,7 @@ local servers = {
     "marksman",
     "pyright",
     "rust", -- we use rustaceanvim for lsp, but setup is different for it
+    "rust_analyzer",
     "sqlls",
     "terraformls",
     "ts_ls",
@@ -40,7 +41,6 @@ local settings = {
 local servers_to_ensure_installed = {}
 local excluded_from_check = { -- add servers to exclude form mason's lspconfig compatibility check here
     "rust",
-    "glsl_analyzer",
     "gdscript",
 }
 for _, s in pairs(servers) do
@@ -82,6 +82,10 @@ for _, server in pairs(servers) do
     }
 
     server = vim.split(server, "@")[1]
+
+    if server == "rust_analyzer" then
+        goto continue
+    end
 
     local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
     if require_ok then
