@@ -1,5 +1,5 @@
 ---- This uses a single specified colorscheme
-local colorscheme = "bamboo"
+local colorscheme = "vague"
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
     print("Colorscheme " .. colorscheme .. " not found!")

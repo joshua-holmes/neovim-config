@@ -79,11 +79,11 @@ return packer.startup(function(use)
     -- Colorschemes
     use("rebelot/kanagawa.nvim")
     use("savq/melange-nvim")
-    use({
-        "ribru17/bamboo.nvim",
-        config = function()
-            require("bamboo").setup()
-        end,
+    use("ribru17/bamboo.nvim")
+    use({"vague2k/vague.nvim",
+        config = function ()
+            require("vague").setup()
+        end
     })
 
     -- cmp plugins
