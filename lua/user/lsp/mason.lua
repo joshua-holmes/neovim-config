@@ -64,6 +64,7 @@ require("mason-lspconfig").setup({
             "rust_analyzer", -- letting rustaceanvim handle it
             "pyright",       -- something already starts this, not sure what
             "bashls",        -- something already starts this, not sure what
+            "zls",           -- something already starts this, not sure what
         }
     }
 })
