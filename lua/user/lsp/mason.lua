@@ -25,21 +25,9 @@ local servers = {
     "zls",
 }
 
-local settings = {
-    ui = {
-        border = "none",
-        icons = {
-            package_installed = "◍",
-            package_pending = "◍",
-            package_uninstalled = "◍",
-        },
-    },
-    log_level = vim.log.levels.INFO,
-    max_concurrent_installers = 4,
-}
-
 local servers_to_ensure_installed = {}
 local excluded_from_check = { -- add servers to exclude form mason's lspconfig compatibility check here
+    "zls",
     "rust",
     "gdscript",
 }
@@ -55,18 +43,22 @@ for _, s in pairs(servers) do
         table.insert(servers_to_ensure_installed, s)
     end
 end
-require("mason").setup(settings)
+require("mason").setup({
+    ui = {
+        border = "none",
+        icons = {
+            package_installed = "◍",
+            package_pending = "◍",
+            package_uninstalled = "◍",
+        },
+    },
+    log_level = vim.log.levels.INFO,
+    max_concurrent_installers = 4,
+})
 require("mason-lspconfig").setup({
     ensure_installed = servers_to_ensure_installed,
     automatic_installation = true,
-    automatic_enable = {
-        exclude = {
-            "rust_analyzer", -- letting rustaceanvim handle it
-            "pyright",       -- something already starts this, not sure what
-            "bashls",        -- something already starts this, not sure what
-            "zls",           -- something already starts this, not sure what
-        }
-    }
+    automatic_enable = false
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
