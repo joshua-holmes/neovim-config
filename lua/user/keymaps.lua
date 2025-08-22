@@ -33,10 +33,10 @@ keymap("n", "<C-;>", ":split<CR>", opts)
 keymap("n", "<C-'>", ":vsplit<CR>", opts)
 
 -- Resize with arrows
-keymap("n", "<A-k>", ":resize -2<CR>", opts)
-keymap("n", "<A-j>", ":resize +2<CR>", opts)
-keymap("n", "<A-h>", ":vertical resize -2<CR>", opts)
-keymap("n", "<A-l>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-K>", ":resize -2<CR>", opts)
+keymap("n", "<A-J>", ":resize +2<CR>", opts)
+keymap("n", "<A-H>", ":vertical resize -2<CR>", opts)
+keymap("n", "<A-L>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts) -- was previously to move cursor to middle of screen
@@ -44,8 +44,8 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts) -- was previously to move cursor to
 keymap("n", "<S-k>", "<cmd>Bdelete!<CR>", opts) -- was previously python manual (weird feature)
 
 -- Move text up and down
-keymap("n", "<A-j>", ":m .+1<CR>==", opts)
-keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+keymap("n", "<C-j>", ":m .+1<CR>==", opts)
+keymap("n", "<C-k>", ":m .-2<CR>==", opts)
 
 -- Better intendation
 keymap("n", "<", "<<", opts)
@@ -61,7 +61,7 @@ keymap("v", "<", "<gv^", opts)
 keymap("v", ">", ">gv^", opts)
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- Insert --
