@@ -1,10 +1,4 @@
-local executors = require("rustaceanvim.executors")
-
 return {
-    -- Plugin configuration
-    tools = {
-        executor = executors.toggleterm,
-    },
     -- LSP configuration
     server = {
         on_attach = function(client, bufnr)

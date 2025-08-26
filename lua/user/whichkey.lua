@@ -467,22 +467,6 @@ which_key.add({
         "<cmd>Spectre<cr>",
         desc = "Find and replace across repo",
     },
-    { "<leader>t", group = "Terminal" },
-    {
-        "<leader>tf",
-        "<cmd>ToggleTerm direction=float<cr>",
-        desc = "Float",
-    },
-    {
-        "<leader>th",
-        "<cmd>ToggleTerm size=10 direction=horizontal<cr>",
-        desc = "Horizontal",
-    },
-    {
-        "<leader>tv",
-        "<cmd>ToggleTerm size=80 direction=vertical<cr>",
-        desc = "Vertical",
-    },
     {
         "<leader>w",
         "<cmd>w!<CR>",
