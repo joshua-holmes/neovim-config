@@ -4,6 +4,9 @@ if not status_ok then
     return
 end
 
+local is_work_pc = os.getenv("MY_NVIM_TARGET") == "work"
+local adapter = (is_work_pc and "copilot") or "anthropic"
+
 cc.setup({
     display = {
         diff = {
@@ -11,9 +14,9 @@ cc.setup({
         },
     },
     strategies = {
-        chat = { adapter = "anthropic" },
-        inline = { adapter = "anthropic" },
-        cmd = { adapter = "anthropic" },
+        chat = { adapter = adapter },
+        inline = { adapter = adapter },
+        cmd = { adapter = adapter },
     },
     adapters = {
         http = {
