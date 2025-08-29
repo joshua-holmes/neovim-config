@@ -11,17 +11,19 @@ cc.setup({
         },
     },
     strategies = {
-        chat = { adapter = "openai" },
-        inline = { adapter = "openai" },
-        cmd = { adapter = "openai" },
+        chat = { adapter = "anthropic" },
+        inline = { adapter = "anthropic" },
+        cmd = { adapter = "anthropic" },
     },
     adapters = {
-        openai = function()
-            return require("codecompanion.adapters").extend("openai", {
-                env = {
-                    api_key = "cmd:gpg --decrypt --quiet ~/.secrets/openai_api_key.gpg",
-                },
-            })
-        end,
+        http = {
+            anthropic = function()
+                return require("codecompanion.adapters").extend("anthropic", {
+                    env = {
+                        api_key = "cmd:gpg --decrypt --quiet ~/.secrets/anthropic_api_key.gpg",
+                    },
+                })
+            end,
+        }
     },
 })
