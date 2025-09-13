@@ -44,8 +44,8 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts) -- was previously to move cursor to
 keymap("n", "<S-k>", "<cmd>Bdelete!<CR>", opts) -- was previously python manual (weird feature)
 
 -- Move text up and down
-keymap("n", "<C-j>", ":m .+1<CR>==", opts)
-keymap("n", "<C-k>", ":m .-2<CR>==", opts)
+keymap("n", "<CA-j>", ":m .+1<CR>==", opts)
+keymap("n", "<CA-k>", ":m .-2<CR>==", opts)
 
 -- Better intendation
 keymap("n", "<", "<<", opts)
@@ -61,7 +61,7 @@ keymap("v", "<", "<gv^", opts)
 keymap("v", ">", ">gv^", opts)
 
 -- Move text up and down
-keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
+keymap("v", "<CA-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<CA-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- Insert --
