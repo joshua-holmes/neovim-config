@@ -45,7 +45,12 @@ local kind_icons = {
     TypeParameter = " ",
     Misc = " ",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
+
+-- When the cursor leaves the snippet, tab doesn't jump back to the snippet
+luasnip.config.set_config({
+  region_check_events = 'InsertEnter',
+  delete_check_events = 'InsertLeave'
+})
 
 cmp.setup({
     snippet = {
