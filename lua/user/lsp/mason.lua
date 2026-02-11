@@ -3,6 +3,7 @@ local servers = {
     "bashls",
     "clangd",
     "cmake",
+    "csharp_ls",
     "cssls",
     "cssmodules_ls",
     "dockerls",
