@@ -137,15 +137,6 @@ return packer.startup(function(use)
     use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
     use("nvim-telescope/telescope-dap.nvim")
 
-    -- AI Code Completion
-    use({
-        "olimorris/codecompanion.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-    })
-
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

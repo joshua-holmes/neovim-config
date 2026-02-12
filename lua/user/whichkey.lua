@@ -118,39 +118,6 @@ which_key.add({
         desc = "Dashboard",
     },
     {
-        "<leader>a",
-        group = "AI Assistant",
-        mode = { "n", "v" },
-        {
-            "<leader>ac",
-            "<cmd>CodeCompanionChat toggle<cr>",
-            desc = "Chat",
-        },
-        {
-            "<leader>aa",
-            "<cmd>CodeCompanionActions<cr>",
-            desc = "Actions",
-        },
-        {
-            "<leader>ae",
-            "<cmd>CodeCompanion /explain<cr>",
-            desc = "Explain",
-            mode = { "v" },
-        },
-        {
-            "<leader>ae",
-            "<cmd>CodeCompanion #buffer /explain<cr>",
-            desc = "Explain",
-            mode = { "n" },
-        },
-        {
-            "<leader>at",
-            "<cmd>CodeCompanion /tests<cr>",
-            desc = "Write unit tests",
-            mode = { "v" },
-        },
-    },
-    {
         "<leader>M",
         ":MarkdownPreviewToggle<cr>",
         desc = "Markdown Preview Toggle",
