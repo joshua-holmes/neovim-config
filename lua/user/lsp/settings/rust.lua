@@ -25,7 +25,24 @@ return {
                     -- desired target as string, if target is different than host
                     target_os = nil,
                     -- cargo features here as a list of strings
-                    features = {},
+                    features = "all",
+                    -- Build scripts and proc macros
+                    buildScripts = {
+                        enable = true,
+                    },
+                },
+                -- Enable proc macros
+                procMacro = {
+                    enable = true,
+                },
+                -- Improve hover and completion
+                hover = {
+                    actions = {
+                        enable = true,
+                    },
+                    documentation = {
+                        enable = true,
+                    },
                 },
             },
         },

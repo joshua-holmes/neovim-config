@@ -81,11 +81,6 @@ for _, server in pairs(servers) do
     local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
     if require_ok then
         if server == "rust" then
-            local old_fn = conf_opts.server.on_attach
-            conf_opts.server.on_attach = function(client, bufnr)
-                opts.on_attach(client, bufnr)
-                old_fn(client, bufnr)
-            end
             conf_opts.server.capabilities = opts.capabilities
             vim.g.rustaceanvim = conf_opts
             goto continue
