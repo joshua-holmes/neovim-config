@@ -52,7 +52,7 @@ require("lazy").setup({
     { "nvim-lualine/lualine.nvim" },
     { "tpope/vim-sleuth" },
     { "echasnovski/mini.nvim" },
-    -- { "folke/neodev.nvim" }, -- Adds lua docs in neovim for neovim config files
+    { "folke/neodev.nvim" }, -- Adds lua docs in neovim for neovim config files
     { "lommix/godot.nvim" },
 
     -- Colorschemes
@@ -93,6 +93,7 @@ require("lazy").setup({
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        lazy = false,
         build = ":TSUpdate",
     },
     { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -118,6 +119,17 @@ require("lazy").setup({
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }
     },
     { "nvim-telescope/telescope-dap.nvim" },
+
+    --AI
+    {
+      "nickjvandyke/opencode.nvim",
+      dependencies = {
+        -- Recommended for `ask()` and `select()`.
+        -- Required for `snacks` provider.
+        ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
+        { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
+      },
+    }
 }, {
     ui = {
         border = "rounded",
