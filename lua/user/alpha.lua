@@ -23,19 +23,6 @@ dashboard.section.buttons.val = {
     dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }
 
-local function footer()
-    -- NOTE: requires the fortune-mod package to work
-    local handle = io.popen("fortune")
-    local fortune = "jpholmes.com" -- default if fortune-mod doesn't owrk
-    if handle then
-        fortune = handle:read("*a")
-        handle:close()
-    end
-    return fortune
-end
-
-dashboard.section.footer.val = footer()
-
 dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
