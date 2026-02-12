@@ -5,9 +5,8 @@ if not status_ok then
 end
 
 configs.setup({
-    -- ensure_installed = { "all" }, -- put the language you want in this array
     ensure_installed = "all", -- one of "all" or a list of languages
-    -- ignore_install = { },                                                       -- List of parsers to ignore installing
+    ignore_install = { "ipkg" }, -- list of problematic parsers to ignore installing
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {

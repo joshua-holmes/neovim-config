@@ -1,145 +1,125 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system({
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
-    })
-    print("Installing packer close and reopen Neovim...")
-    vim.cmd([[packadd packer.nvim]])
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-    print("Failed to load packer")
-    return
-end
-
--- Have packer use a popup window
-packer.init({
-    display = {
-        open_fn = function()
-            return require("packer.util").float({ border = "rounded" })
+-- Setup lazy.nvim
+require("lazy").setup({
+    -- Core dependencies
+    { "nvim-lua/popup.nvim" }, -- An implementation of the Popup API from vim in Neovim
+    { "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
+    
+    { -- Markdown preview in browser
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function()
+            vim.fn["mkdp#util#install"]()
         end,
     },
-})
-
--- Install your plugins here
-return packer.startup(function(use)
-    -- My plugins here
-    use("wbthomason/packer.nvim") -- Have packer manage itself
-    use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-    use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-    use({ -- Markdown preview in browser
-        "iamcco/markdown-preview.nvim",
-        run = function()
-            fn["mkdp#util#install"]()
-        end,
-    })
-    use("nvim-pack/nvim-spectre") -- Tool to replace all text in entire git repo
-    use({
+    
+    { "nvim-pack/nvim-spectre" }, -- Tool to replace all text in entire git repo
+    
+    {
         "mrcjkb/rustaceanvim",
         version = "^5",
         lazy = false,
-    })
-    use("tamton-aquib/duck.nvim") -- Absolutely not useful...
-    use("HiPhish/rainbow-delimiters.nvim")
-    use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-    use("kyazdani42/nvim-web-devicons")
-    use("kyazdani42/nvim-tree.lua")
-    use("akinsho/bufferline.nvim")
-    use("moll/vim-bbye")
-    use("ahmedkhalf/project.nvim")
-    use("lewis6991/impatient.nvim")
-    use("lukas-reineke/indent-blankline.nvim")
-    use("goolord/alpha-nvim")
-    use("folke/which-key.nvim")
-    use("nvim-lualine/lualine.nvim")
-    use("tpope/vim-sleuth")
-    use("echasnovski/mini.nvim")
-    -- use("folke/neodev.nvim") -- Adds lua docs in neovim for neovim config files
-    use("lommix/godot.nvim")
+    },
+    
+    { "tamton-aquib/duck.nvim" }, -- Absolutely not useful...
+    { "HiPhish/rainbow-delimiters.nvim" },
+    { "windwp/nvim-autopairs" }, -- Autopairs, integrates with both cmp and treesitter
+    { "kyazdani42/nvim-web-devicons" },
+    { "kyazdani42/nvim-tree.lua" },
+    { "akinsho/bufferline.nvim" },
+    { "moll/vim-bbye" },
+    { "ahmedkhalf/project.nvim" },
+    { "lukas-reineke/indent-blankline.nvim" },
+    { "goolord/alpha-nvim" },
+    { "folke/which-key.nvim" },
+    { "nvim-lualine/lualine.nvim" },
+    { "tpope/vim-sleuth" },
+    { "echasnovski/mini.nvim" },
+    -- { "folke/neodev.nvim" }, -- Adds lua docs in neovim for neovim config files
+    { "lommix/godot.nvim" },
 
     -- Colorschemes
-    use("rebelot/kanagawa.nvim")
-    use("savq/melange-nvim")
-    use("ribru17/bamboo.nvim")
-    use({"vague2k/vague.nvim",
-        config = function ()
+    { "rebelot/kanagawa.nvim" },
+    { "savq/melange-nvim" },
+    { "ribru17/bamboo.nvim" },
+    {
+        "vague2k/vague.nvim",
+        config = function()
             require("vague").setup()
         end
-    })
+    },
 
     -- cmp plugins
-    use("hrsh7th/nvim-cmp") -- The completion plugin
-    use("hrsh7th/cmp-buffer") -- buffer completions
-    use("hrsh7th/cmp-path") -- path completions
-    use("hrsh7th/cmp-cmdline") -- cmdline completions
-    use("saadparwaiz1/cmp_luasnip") -- snippet completions
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-nvim-lua")
+    { "hrsh7th/nvim-cmp" }, -- The completion plugin
+    { "hrsh7th/cmp-buffer" }, -- buffer completions
+    { "hrsh7th/cmp-path" }, -- path completions
+    { "hrsh7th/cmp-cmdline" }, -- cmdline completions
+    { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-nvim-lua" },
 
     -- Snippets
-    use("L3MON4D3/LuaSnip") --snippet engine
-    use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+    { "L3MON4D3/LuaSnip" }, --snippet engine
+    { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
 
     -- LSP
-    use("neovim/nvim-lspconfig") -- enable LSP
-    use("williamboman/mason.nvim") -- simple to use language server installer
-    use("williamboman/mason-lspconfig.nvim") -- simple to use language server installer
-    use("nvimtools/none-ls.nvim") -- LSP diagnostics and code actions
-    use("RRethy/vim-illuminate")
+    { "neovim/nvim-lspconfig" }, -- enable LSP
+    { "williamboman/mason.nvim" }, -- simple to use language server installer
+    { "williamboman/mason-lspconfig.nvim" }, -- simple to use language server installer
+    { "nvimtools/none-ls.nvim" }, -- LSP diagnostics and code actions
+    { "RRethy/vim-illuminate" },
 
     -- Telescope
-    use("nvim-telescope/telescope.nvim")
-    use("nvim-telescope/telescope-media-files.nvim")
+    { "nvim-telescope/telescope.nvim" },
+    { "nvim-telescope/telescope-media-files.nvim" },
 
     -- Treesitter
-    use({
+    {
         "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-    })
-    use("JoosepAlviste/nvim-ts-context-commentstring")
+        build = ":TSUpdate",
+    },
+    { "JoosepAlviste/nvim-ts-context-commentstring" },
 
     -- Git
-    use("sindrets/diffview.nvim")
-    use("lewis6991/gitsigns.nvim")
-    use({
+    { "sindrets/diffview.nvim" },
+    { "lewis6991/gitsigns.nvim" },
+    {
         "NeogitOrg/neogit",
-        requires = {
+        dependencies = {
             "nvim-lua/plenary.nvim", -- required
             "sindrets/diffview.nvim", -- optional - Diff integration
-
-            -- Only one of these is needed.
             "nvim-telescope/telescope.nvim", -- optional
         },
-    })
-    use("mrloop/telescope-git-branch.nvim")
+    },
+    { "mrloop/telescope-git-branch.nvim" },
 
     -- Debugging
-    use("mfussenegger/nvim-dap")
-    use("joshua-holmes/dap-projects.nvim")
-    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
-    use("nvim-telescope/telescope-dap.nvim")
-
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if PACKER_BOOTSTRAP then
-        require("packer").sync()
-    end
-end)
+    { "mfussenegger/nvim-dap" },
+    { "joshua-holmes/dap-projects.nvim" },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }
+    },
+    { "nvim-telescope/telescope-dap.nvim" },
+}, {
+    ui = {
+        border = "rounded",
+    },
+})

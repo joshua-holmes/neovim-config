@@ -362,32 +362,6 @@ which_key.add({
         "<cmd>lua require('mini.map').refresh()<cr>",
         desc = "Refresh",
     },
-    { "<leader>p", group = "Packer" },
-    {
-        "<leader>pS",
-        "<cmd>PackerStatus<cr>",
-        desc = "Status",
-    },
-    {
-        "<leader>pc",
-        "<cmd>PackerCompile<cr>",
-        desc = "Compile",
-    },
-    {
-        "<leader>pi",
-        "<cmd>PackerInstall<cr>",
-        desc = "Install",
-    },
-    {
-        "<leader>ps",
-        "<cmd>PackerSync<cr>",
-        desc = "Sync",
-    },
-    {
-        "<leader>pu",
-        "<cmd>PackerUpdate<cr>",
-        desc = "Update",
-    },
     {
         "<leader>q",
         "<cmd>q!<CR>",
