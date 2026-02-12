@@ -40,18 +40,63 @@ require("lazy").setup({
     
     { "tamton-aquib/duck.nvim" }, -- Absolutely not useful...
     { "HiPhish/rainbow-delimiters.nvim" },
-    { "windwp/nvim-autopairs" }, -- Autopairs, integrates with both cmp and treesitter
+    {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("user.autopairs")
+        end
+    }, -- Autopairs, integrates with both cmp and treesitter
     { "kyazdani42/nvim-web-devicons" },
-    { "kyazdani42/nvim-tree.lua" },
-    { "akinsho/bufferline.nvim" },
+    {
+        "kyazdani42/nvim-tree.lua",
+        config = function()
+            require("user.nvim-tree")
+        end
+    },
+    {
+        "akinsho/bufferline.nvim",
+        config = function()
+            require("user.bufferline")
+        end
+    },
     { "moll/vim-bbye" },
-    { "ahmedkhalf/project.nvim" },
-    { "lukas-reineke/indent-blankline.nvim" },
-    { "goolord/alpha-nvim" },
-    { "folke/which-key.nvim" },
-    { "nvim-lualine/lualine.nvim" },
+    { "ahmedkhalf/project.nvim",
+        config = function()
+            require("user.project")
+        end
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("user.indentline")
+        end
+    },
+    {
+        "goolord/alpha-nvim",
+        config = function()
+            require("user.alpha")
+        end
+    },
+    {
+        "folke/which-key.nvim",
+        config = function()
+            require("user.whichkey")
+        end
+    },
+    {
+        "nvim-lualine/lualine.nvim",
+        config = function()
+            require("user.lualine")
+        end
+    },
     { "tpope/vim-sleuth" },
-    { "echasnovski/mini.nvim" },
+    { "echasnovski/mini.nvim",
+        config = function()
+            require("user.mini_map")
+            require("user.mini_comment")
+            require("user.mini_diff")
+        end
+    },
     { "folke/neodev.nvim" }, -- Adds lua docs in neovim for neovim config files
     { "lommix/godot.nvim" },
 
@@ -67,7 +112,12 @@ require("lazy").setup({
     },
 
     -- cmp plugins
-    { "hrsh7th/nvim-cmp" }, -- The completion plugin
+    {
+        "hrsh7th/nvim-cmp",
+        config = function()
+            require("user.cmp")
+        end
+    }, -- The completion plugin
     { "hrsh7th/cmp-buffer" }, -- buffer completions
     { "hrsh7th/cmp-path" }, -- path completions
     { "hrsh7th/cmp-cmdline" }, -- cmdline completions
@@ -87,7 +137,12 @@ require("lazy").setup({
     { "RRethy/vim-illuminate" },
 
     -- Telescope
-    { "nvim-telescope/telescope.nvim" },
+    {
+        "nvim-telescope/telescope.nvim",
+        config = function()
+            require("user.telescope")
+        end
+    },
     { "nvim-telescope/telescope-media-files.nvim" },
 
     -- Treesitter
@@ -95,12 +150,20 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         lazy = false,
         build = ":TSUpdate",
+        config = function()
+            require("user.treesitter")
+        end
     },
     { "JoosepAlviste/nvim-ts-context-commentstring" },
 
     -- Git
     { "sindrets/diffview.nvim" },
-    { "lewis6991/gitsigns.nvim" },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("user.gitsigns")
+        end
+    },
     {
         "NeogitOrg/neogit",
         dependencies = {
@@ -108,15 +171,26 @@ require("lazy").setup({
             "sindrets/diffview.nvim", -- optional - Diff integration
             "nvim-telescope/telescope.nvim", -- optional
         },
+        config = function()
+            require("user.neogit")
+        end
     },
     { "mrloop/telescope-git-branch.nvim" },
 
     -- Debugging
-    { "mfussenegger/nvim-dap" },
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            require("user.dap")
+        end
+    },
     { "joshua-holmes/dap-projects.nvim" },
     {
         "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+        config = function()
+            require("user.dapui")
+        end
     },
     { "nvim-telescope/telescope-dap.nvim" },
 
@@ -129,6 +203,9 @@ require("lazy").setup({
         ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
         { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
       },
+      config = function()
+          require("user.opencode")
+      end
     }
 }, {
     ui = {
