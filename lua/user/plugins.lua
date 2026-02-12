@@ -20,7 +20,6 @@ require("lazy").setup({
     -- Core dependencies
     { "nvim-lua/popup.nvim" }, -- An implementation of the Popup API from vim in Neovim
     { "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
-    
     { -- Markdown preview in browser
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -29,15 +28,12 @@ require("lazy").setup({
             vim.fn["mkdp#util#install"]()
         end,
     },
-    
     { "nvim-pack/nvim-spectre" }, -- Tool to replace all text in entire git repo
-    
     {
         "mrcjkb/rustaceanvim",
         version = "^5",
         lazy = false,
     },
-    
     { "tamton-aquib/duck.nvim" }, -- Absolutely not useful...
     { "HiPhish/rainbow-delimiters.nvim" },
     {
