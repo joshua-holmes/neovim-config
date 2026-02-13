@@ -1,7 +1,12 @@
-return {
+local handlers_ok, handlers = pcall(require, "user.lsp.handlers")
+
+vim.g.rustaceanvim = {
     -- LSP configuration
     server = {
         on_attach = function(client, bufnr)
+            if handlers_ok and handlers.on_attach then
+                handlers.on_attach(client, bufnr)
+            end
             vim.keymap.set("n", "<leader>la", function()
                 vim.cmd.RustLsp("codeAction") -- supports rust-analyzer's grouping
                 -- or vim.lsp.buf.codeAction() if you don't want grouping.
@@ -50,3 +55,7 @@ return {
     -- DAP configuration
     dap = {},
 }
+
+if handlers_ok and handlers.capabilities then
+    vim.g.rustaceanvim.server.capabilities = handlers.capabilities
+end

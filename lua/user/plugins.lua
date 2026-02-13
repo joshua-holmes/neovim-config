@@ -30,9 +30,12 @@ require("lazy").setup({
     },
     { "nvim-pack/nvim-spectre" }, -- Tool to replace all text in entire git repo
     {
-        "mrcjkb/rustaceanvim",
-        version = "^5",
-        lazy = false,
+        'mrcjkb/rustaceanvim',
+        version = '^7', -- Recommended
+        lazy = false, -- This plugin is already lazy
+        config = function()
+            require("user.rustaceanvim")
+        end
     },
     { "tamton-aquib/duck.nvim" }, -- Absolutely not useful...
     { "HiPhish/rainbow-delimiters.nvim" },
