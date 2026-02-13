@@ -302,16 +302,6 @@ which_key.add({
         expr = true,
     },
     {
-        "<leader>ou",
-        function() opencode.command("session.half.page.up") end,
-        desc = "Scroll opencode up",
-    },
-    {
-        "<leader>od",
-        function() opencode.command("session.half.page.down") end,
-        desc = "Scroll opencode down",
-    },
-    {
         "<leader>h",
         "<cmd>nohlsearch<CR><cmd>lua require('mini.map').refresh()<CR>",
         desc = "No Highlight",
